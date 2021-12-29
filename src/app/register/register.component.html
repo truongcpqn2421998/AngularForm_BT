@@ -10,7 +10,8 @@
     <mat-label>Email</mat-label>
     <input matInput [formControl]="signupForm.get('email')" >
     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
+    <mat-error *ngIf="signupForm.get('email').hasError('required')">the email is required</mat-error>
+    <mat-error *ngIf="signupForm.get('email').hasError('email')">the email wrong eg:abc@gmail.com</mat-error>
   </mat-form-field><br>
   <mat-form-field appearance="fill">
     <mat-label>Enter your password</mat-label>
@@ -18,35 +19,40 @@
     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
+    <mat-error *ngIf="signupForm.get('password').hasError('required')">the password is required</mat-error>
+    <mat-error *ngIf="signupForm.get('password').hasError('minLength')">the password minLength 6</mat-error>
   </mat-form-field><br>
-  <mat-form-field appearance="legacy">
-    <mat-label>Comfirm Password</mat-label>
-    <input matInput [formControl]="signupForm.get('comfirmpassword')" >
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field><br>
+<!--  <mat-form-field appearance="legacy">-->
+<!--    <mat-label>Comfirm Password</mat-label>-->
+<!--    <input matInput [formControl]="signupForm.get('comfirmpassword')" >-->
+<!--    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
+<!--    <mat-hint>Hint</mat-hint>-->
+<!--  </mat-form-field><br>-->
   <mat-form-field appearance="fill">
     <mat-label>Select</mat-label>
     <mat-select [formControl]="signupForm.get('country')" >
       <mat-option value="HN">HN</mat-option>
       <mat-option value="CP">CP</mat-option>
     </mat-select>
+    <mat-error *ngIf="signupForm.get('country').hasError('required')">the country is required</mat-error>
   </mat-form-field><br>
   <mat-form-field appearance="legacy">
     <mat-label>Age</mat-label>
     <input matInput [formControl]="signupForm.get('age')" >
     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
+    <mat-error *ngIf="signupForm.get('age').hasError('required')">the age is required</mat-error>
+    <mat-error *ngIf="signupForm.get('age').hasError('min')">the age min 8</mat-error>
   </mat-form-field><br>
   <mat-radio-group aria-label="Select an option" [formControl]="signupForm.get('gender')" >
     <mat-radio-button value="male">Male</mat-radio-button>
     <mat-radio-button value="female">Female</mat-radio-button>
+    <mat-error *ngIf="signupForm.get('gender').hasError('required')">the gender is required</mat-error>
   </mat-radio-group><br>
   <mat-form-field appearance="legacy">
     <mat-label>Phone</mat-label>
     <input matInput [formControl]="signupForm.get('phone')" >
     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
+    <mat-error *ngIf="signupForm.get('phone').hasError('required')">the phone is required</mat-error>
   </mat-form-field><br>
   <div class="form-group row">
     <div class="col-md-10 offset-md-2">

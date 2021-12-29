@@ -21,8 +21,8 @@ export class RegisterComponent implements OnInit {
     phone: ''
   };
 
-  password = '';
-  comfirmpassword = '';
+  // password = '';
+  // comfirmpassword = '';
 
   constructor() {
   }
@@ -30,11 +30,11 @@ export class RegisterComponent implements OnInit {
     this.signupForm = new FormGroup({
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      comfirmpassword: new FormControl('', CustomValidators.passwordsMatch(this.password, this.comfirmpassword)),
+      // comfirmpassword: new FormControl('', CustomValidators.passwordsMatch(this.password, this.comfirmpassword)),
       country: new FormControl('', Validators.required),
       age: new FormControl(18, Validators.min(19)),
       gender: new FormControl('', Validators.required),
-      phone: new FormControl('', Validators.pattern(/^\+84\d{9,10}$/))
+      phone: new FormControl('', [ Validators.required, Validators.pattern(/^\+84\d{9,10}$/)])
     });
   }
 
